@@ -1,0 +1,9 @@
+O Princípio de Substituição de Liskov (Liskov Substitution Principle - LSP) é um dos princípios do SOLID que estabelece que os objetos de uma classe derivada devem ser substituíveis por objetos de sua classe base sem alterar a corretude do programa. Em outras palavras, os subtipos devem ser capazes de substituir seus tipos base sem causar efeitos colaterais indesejados ou violar as expectativas dos clientes.
+
+Neste exemplo, temos a classe `Rectangle` que representa um retângulo com uma largura (`width`) e altura (`height`). A classe `Rectangle` possui métodos para definir a largura e altura, bem como um método para calcular a área com base nesses valores.
+
+A classe `Square` é uma subclasse de `Rectangle` e representa um quadrado. Ela herda os métodos de `Rectangle`, mas redefine os métodos `setWidth` e `setHeight` para garantir que o quadrado mantenha lados iguais. Isso viola o princípio de que um quadrado não é substituível por um retângulo, pois definir a largura de um quadrado resultará em uma altura diferente.
+
+A classe `AreaCalculator` tem um método printArea que recebe um objeto do tipo `Rectangle` e calcula e imprime a área. No entanto, ao chamar esse método com um objeto do tipo `Square`, ocorrerá um comportamento inesperado, pois o quadrado não pode ser substituído corretamente pelo retângulo.
+
+Para respeitar o Princípio de Substituição de Liskov, é necessário refatorar o código para garantir que a substituição seja correta. Uma possível solução seria utilizar uma hierarquia de classes separada para `Rectangle` e `Square`, onde ambas compartilham uma interface comum (por exemplo, Shape). Dessa forma, cada classe teria sua própria implementação adequada para o cálculo de área, evitando violações do LSP.
